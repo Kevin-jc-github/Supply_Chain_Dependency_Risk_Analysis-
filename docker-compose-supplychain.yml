@@ -106,11 +106,22 @@ services:
     depends_on:
       - flink
       - kafka
+  
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - prometheus
+
 
 volumes:
   neo4j_data:
   hadoop_namenode:
   hadoop_datanode:
+  grafana-storage:
 
 networks:
   hadoop:
