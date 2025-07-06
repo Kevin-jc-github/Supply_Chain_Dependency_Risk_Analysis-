@@ -1,0 +1,13 @@
+startDelaySeconds: 0
+hostPort: kafka:7071
+lowercaseOutputName: true
+lowercaseOutputLabelNames: true
+rules:
+  - pattern: "kafka.server<type=(.+), name=(.+)PerSec\\d*><>Count"
+    name: kafka_server_$1_$2_total
+    type: COUNTER
+    help: "Kafka server $1 $2 total"
+  - pattern: "kafka.server<type=(.+), name=(.+)><>Value"
+    name: kafka_server_$1_$2
+    type: GAUGE
+    help: "Kafka server $1 $2"
