@@ -1,8 +1,47 @@
 {
   "id": null,
+  "uid": "flink-jobmanager-dashboard",
   "title": "Flink Job Manager Metrics",
-  "panels": [],
-  "schemaVersion": 16,
+  "timezone": "browser",
+  "schemaVersion": 26,
   "version": 1,
-  "refresh": "10s"
+  "refresh": "10s",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Task Slots Available",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "flink_taskmanager_Status_NumAvailableSlots",
+          "legendFormat": "Available Slots",
+          "refId": "A"
+        }
+      ],
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    },
+    {
+      "type": "graph",
+      "title": "Jobs Running",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "flink_jobmanager_job_numRunningJobs",
+          "legendFormat": "Running Jobs",
+          "refId": "A"
+        }
+      ],
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      }
+    }
+  ]
 }
